@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- The Code inside the Brackets is going to be run on server side not the client.  Here Locals var refers to server.js as Object-->
+    <% if(locals.fileLink!=null){ %>
+        <div style="margin-bottom: 1rem;">
+            Link to Download the file
+            <a href="<%= locals.fileLink %>"><%= locals.fileLink %></a> 
+        </div>
+    <% } %>
+    <!-- The action attr of the <form> tag specifies the URL of the server-side program that will handle the data submitted by the user. The method attr specifies the HTTP method that will be used to send the  data from form to the server.
+    Here enctype="multipart/form-data" attr is necessary when a form includes a file input as field, & it ensures that the form data is properly encoded and sent to the server in a way that can handle the file contents. -->
+    <form action="/upload" method="post" enctype="multipart/form-data"
+    style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1rem; border: 1px solid #ccc; border-radius: 0.5rem;">
+        <div>
+          <label for="file" style="font-weight: bold;">File:</label>
+          <input type="file" id="file" name="file" required style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 0.25rem;">
+        </div>
+        <div>
+          <label for="password" style="font-weight: bold;">Password:</label>
+          <input type="password" id="password" name="password" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 0.25rem;">
+        </div>
+        <div>
+          <button type="submit" style="background-color: #007bff; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 0.25rem; cursor: pointer;">Share</button>
+        </div>
+      </form>
+      
+</body>
+</html>
